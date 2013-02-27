@@ -263,7 +263,7 @@ vendor
 ================================
 
 When having problems with version of the gems run the following commands
-sudo gem regenerate_binstubs
+gem install rubygems-bundler
 gem regenerate_binstubs
 
 if neccesary run 

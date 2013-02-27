@@ -263,7 +263,7 @@ vendor
 ================================
 
 When having problems with version of the gems run the following commands
-sudo gem regenerate_binstubs
+gem install bundler
 gem regenerate_binstubs
 
 if neccesary run 
@@ -272,3 +272,6 @@ rake db:seed
 
 Also run for the test with Cucumber
 rake db:test:prepare
+
+
+http://www.natontesting.com/2009/11/09/debugging-cucumber-tests-with-ruby-debug/
