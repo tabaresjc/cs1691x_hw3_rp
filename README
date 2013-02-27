@@ -269,3 +269,9 @@ gem regenerate_binstubs
 if neccesary run 
 rake db:migrate
 rake db:seed
+
+Also run for the test with Cucumber
+rake db:test:prepare
+
+
+http://www.natontesting.com/2009/11/09/debugging-cucumber-tests-with-ruby-debug/
