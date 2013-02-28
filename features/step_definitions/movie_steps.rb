@@ -33,13 +33,20 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
 	end
 end
 
+Then /I should see all of the movies/ do
+	Movie.find(:all).count.should == page.all('table tbody tr').count
+end
+
+Then /I should not see any movies/ do
+	page.all('table tbody tr').count == 0
+end 
+
 # Given the list of rating, check if the movies appear or not
-Then /I should (not )?see all of the movies: (.*)/ do |notsee, rating_list|
-	if notsee then
-		Movie.find_all_by_rating(rating_list.split(/,?\s+/)).count.should != page.all('table tbody tr').count
-	else
-		Movie.find_all_by_rating(rating_list.split(/,?\s+/)).count.should == page.all('table tbody tr').count
-	end
+Then /I should (not )?see all movies with rating: (.*)/ do |notsee, rating_list|
+	condition = rating_list.split(/,?\s+/)
+	condition = Movie.all_ratings.delete_if { |x| condition.include?(x) } unless notsee == nil
+	Movie.find_all_by_rating(condition).count.should == page.all('table tbody tr').count
+
 	#movie_list = Movie.find_all_by_rating(rating_list.split(/,?\s+/))
 	#movie_list.each do |movie|
 	#	if notsee==nil then

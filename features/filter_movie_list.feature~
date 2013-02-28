@@ -22,14 +22,18 @@ Background: movies have been added to database
   And  I am on the RottenPotatoes home page
   
 Scenario: restrict to movies with 'PG' or 'R' ratings
-	Given I check the following ratings: PG, R, G
-	And I uncheck the following ratings: PG-13, NC-17
+	Given I check the following ratings: PG, R
+	And I uncheck the following ratings: PG-13, G, NC-17
 	When I press "Refresh"
-	Then I should see all of the movies: PG, R
-	And I should not see all of the movies: PG-13, G, NC-17
+	Then I should see all movies with rating: PG, R
+	And I should not see all of the movies with rating: PG-13, G, NC-17
 
 Scenario: no ratings selected
-  # see assignment
+  	Given I uncheck the following ratings: PG, R, PG-13, G, NC-17
+	When I press "Refresh"
+	Then I should not see any movies
 
 Scenario: all ratings selected
-  # see assignment
+  	Given I check the following ratings: PG, R, PG-13, G, NC-17
+	When I press "Refresh"
+	Then I should see all of the movies
