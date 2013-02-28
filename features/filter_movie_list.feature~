@@ -22,12 +22,11 @@ Background: movies have been added to database
   And  I am on the RottenPotatoes home page
   
 Scenario: restrict to movies with 'PG' or 'R' ratings
-	Given I am on the RottenPotatoes home page
-	And When I check the following ratings: PG, R
-	And When I uncheck the following ratings: PG-13, G, NC-17
+	Given I check the following ratings: PG, R, G
+	And I uncheck the following ratings: PG-13, NC-17
 	When I press "Refresh"
-	Then I should see /[PG|R]/
-	And I should not see /[G|PG-13]/
+	Then I should see all of the movies: PG, R
+	And I should not see all of the movies: PG-13, G, NC-17
 
 Scenario: no ratings selected
   # see assignment

@@ -5,7 +5,6 @@
 # files.
 require 'rubygems'
 require 'ruby-debug'
-
 require 'cucumber/rails'
 
 
