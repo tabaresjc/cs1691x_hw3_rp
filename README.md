@@ -1,4 +1,1 @@
-hw3_rottenpotatoes
-==================
-
-CS169.1x Week 3
+CS169.1x Week 4 Homework 3
